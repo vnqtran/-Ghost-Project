@@ -36,36 +36,30 @@ public class MainController : MonoBehaviour {
 		if(anim){
 			AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 			
+			if(Input.GetButton("Vertical") || Input.GetButton("Horizontal")){
+				anim.SetFloat ("Speed",1);
+			}
+			if(Input.GetButtonDown ("Jump")){
+				anim.SetFloat ("Jump",1);
+			}
+			if(!Input.anyKey){
+				anim.SetFloat ("Speed",3);
+				anim.SetFloat("Jump",0);
+			}
 			//if we're in "Run" mode, respond to input for jump, and set the Jump parameter accordingly. 
-			if(stateInfo.nameHash == Animator.StringToHash("Base Layer.BaseLayer"))
+			/*if(stateInfo.nameHash == Animator.StringToHash("Base Layer.BaseLayer"))
 			{
-				if(Input.GetButtonDown ("Vertical")){
+				if(Input.GetButtonDown ("Vertical") || Input.GetButtonDown ("Horizontal")){
 					anim.SetFloat ("Speed",1);
-					anim.SetFloat ("Stop",0);
 				}
-				if (Input.GetButtonDown ("Horizontal")){
-					anim.SetFloat("Speed",1);
-					anim.SetFloat ("Stop",0);
-				}
-				if(Input.GetButtonUp("Horizontal")){
-					anim.SetFloat ("Stop",1);
-					anim.SetFloat ("Speed",0);
-				}
-				if(Input.GetButtonUp("Vertical")){
-					anim.SetFloat ("Stop",1);
-					anim.SetFloat ("Speed",0);
+				if(Input.anyKey == false){
+					anim.SetFloat ("Speed",3);
 				}
 			}
 			if(stateInfo.shortNameHash == Animator.StringToHash("Base Layer.Walk")){
-				if(Input.GetButtonUp("Horizontal")){
-					anim.SetFloat ("Stop",1);
-					anim.SetFloat ("Speed",0);
-				}
-				if(Input.GetButtonUp("Vertical")){
-					anim.SetFloat ("Stop",1);
-					anim.SetFloat ("Speed",0);
-				}
+				if(Input.anyKey == false){
+					anim.SetFloat ("Speed",3);
+				}*/
 			}
+		}
 	}
-	}
-}
